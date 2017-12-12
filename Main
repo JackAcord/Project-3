@@ -1,0 +1,77 @@
+//This block of variables are mainly to get as much of the other information as possible
+var firstName = document.getElementById("firstName").value
+var lastName = document.getElementById("lastName").value
+var checkedValue = document.querySelector(".status").value
+var income = document.getElementById("income").value
+
+//This is checking which of the checkboxes have been filled
+if (checkedValue == "single") {
+	singleTax();
+} else if (checkedValue == "head") {
+	headTax();
+} else if (checkedValue == "joint") {
+	marriedTax();
+}
+
+//I decided to split the different statuses into their own functions as that seems to be the most manageable
+//As numbers are the only difference between the three functions, the commenting will only be in one of them
+function singleTax() {
+	//It was pretty much mandatory to use if statements due to the nature of the text brackets
+	if (income >= 0 && income < 9325) {
+		var finalIncome = income * .10
+	} else if (income >= 9325 && income < 37950) {
+		//Using decimel numbers seemed to be the simpleist way to calculate percentages
+		var finalIncome = 932.5 + (.15 * (income - 9325))
+	} else if (income >= 37950 && income < 91900) {
+		var finalIncome = 5226.25 + (.25 * (income - 37950))
+	} else if (income >= 91900 && income < 191650) {
+		var finalIncome = 18713.75 + (.28 * (income - 91900))
+	} else if (income >= 191650 && income < 416700) {
+		var finalIncome = 46643.75 + (.33 * (income - 191650))
+	} else if (income >= 416700 && income < 418400) {
+		var finalIncome = 120190.25 + (.35 * (income - 416700))
+	} else if (income >= 418400) {
+		var finalIncome = 121505 + (.396 * (income - 418400))
+	}
+	//This is what should display the final number
+	document.querySelector(".tax").innerHTML = firstName + lastName + ", you owe $" + finalIncome;
+}
+
+function headTax() {
+	if (income >= 0 && income < 18650) {
+		var finalIncome = income * .10
+	} else if (income >= 18650 && income < 75900) {
+		var finalIncome = 1865 + (.15 * (income - 18650))
+	} else if (income >= 75900 && income < 153100) {
+		var finalIncome = 10452.5 + (.25 * (income - 75900))
+	} else if (income >= 153100 && income < 233350) {
+		var finalIncome = 29752.5 + (.28 * (income - 153100))
+	} else if (income >= 233350 && income < 416700) {
+		var finalIncome = 52222.5 + (.33 * (income - 233350))
+	} else if (income >= 416700 && income < 470700) {
+		var finalIncome = 112728 + (.35 * (income - 416701))
+	} else if (income >= 470700) {
+		var finalIncome = 131628 + (.396 * (income - 470700))
+	}
+	document.querySelector(".tax").innerHTML = firstName + lastName + ", you owe $" + finalIncome;
+}
+}
+
+function marriedTax() {
+	if (income >= 0 && income < 9325) {
+		var finalIncome = income * .10
+	} else if (income >= 9325 && income < 37950) {
+		var finalIncome = 932.5 + (.15 * (income - 9325))
+	} else if (income >= 37950 && income < 91900) {
+		var finalIncome = 5226.25 + (.25 * (income - 37950))
+	} else if (income >= 91900 && income < 191650) {
+		var finalIncome = 18713.75 + (.28 * (income - 91900))
+	} else if (income >= 191650 && income < 416700) {
+		var finalIncome = 46643.75 + (.33 * (income - 191650))
+	} else if (income >= 416700 && income < 418400) {
+		var finalIncome = 120190.25 + (.35 * (income - 416700))
+	} else if (income >= 418400) {
+		var finalIncome = 121505 + (.396 * (income - 418400))
+	}
+	document.querySelector(".tax").innerHTML = firstName + lastName + ", you owe $" + finalIncome;
+}
