@@ -1,0 +1,12 @@
+body {
+	background: #670345;
+	font-family: verdana;
+}
+
+#main {
+	background: #fff;
+	text-align: center;
+	padding: 2em;
+	margin: 2em;
+	margin: 2em auto;
+}
